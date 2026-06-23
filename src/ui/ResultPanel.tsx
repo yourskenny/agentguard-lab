@@ -1,16 +1,18 @@
 import { RotateCcw, SearchCheck, Wrench } from 'lucide-react';
-import type { EvalResult } from '../domain/types';
+import type { AgentProfile, EvalResult } from '../domain/types';
 import type { FailureDiagnosis } from '../repair/analyzer';
-import type { RepairPatch } from '../repair/advisor';
+import type { PatchDiff, RepairPatch } from '../repair/advisor';
 
 interface ResultPanelProps {
   results: EvalResult[];
   diagnoses: FailureDiagnosis[];
   patches: RepairPatch[];
+  patchDiffs: PatchDiff[];
+  patchedAgent?: AgentProfile;
   onRetest: () => void;
 }
 
-export function ResultPanel({ results, diagnoses, patches, onRetest }: ResultPanelProps) {
+export function ResultPanel({ results, diagnoses, patches, patchDiffs, patchedAgent, onRetest }: ResultPanelProps) {
   return (
     <section className="tool-panel result-panel">
       <div className="panel-heading">
@@ -68,6 +70,37 @@ export function ResultPanel({ results, diagnoses, patches, onRetest }: ResultPan
           </article>
         ))}
       </div>
+
+      {patchDiffs.length > 0 ? (
+        <div className="diff-stack" aria-label="修复 diff">
+          <h3>修复 diff</h3>
+          {patchDiffs.map((diff) => (
+            <article key={`${diff.patchId}-${diff.targetField}`} className="diff-row">
+              <div className="row-header">
+                <strong>{diff.targetField}</strong>
+                <span>{diff.patchId}</span>
+              </div>
+              <div className="diff-grid">
+                <div>
+                  <span>Before</span>
+                  <pre>{diff.before || '空'}</pre>
+                </div>
+                <div>
+                  <span>After</span>
+                  <pre>{diff.after || '空'}</pre>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : null}
+
+      {patchedAgent ? (
+        <div className="patched-agent-block">
+          <h3>修复后 Agent 配置</h3>
+          <p>{patchedAgent.systemPrompt}</p>
+        </div>
+      ) : null}
 
       {results.length === 0 ? <p className="empty-copy">运行评测后会显示失败证据、归因和修复补丁。</p> : null}
     </section>

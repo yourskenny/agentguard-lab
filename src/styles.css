@@ -23,6 +23,7 @@ body {
 }
 
 button,
+input,
 textarea {
   font: inherit;
 }
@@ -252,6 +253,68 @@ h3 {
   margin-top: 16px;
 }
 
+.config-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.field-block {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field-block > span,
+.tool-config-title h3,
+.diff-stack h3,
+.patched-agent-block h3 {
+  color: #43504c;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+input {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid rgba(23, 32, 30, 0.22);
+  background: #fbfdfb;
+  color: #17201e;
+  padding: 8px 10px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.14);
+}
+
+.config-textarea {
+  min-height: 118px;
+  background: #fbfdfb;
+  color: #17201e;
+}
+
+.compact-textarea {
+  min-height: 82px;
+}
+
+.tool-config {
+  display: grid;
+  gap: 10px;
+}
+
+.tool-config-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tool-config-title svg {
+  color: #0f766e;
+}
+
 .detail-block p,
 .case-row p,
 .result-row p,
@@ -358,15 +421,26 @@ h3 {
   overflow-wrap: anywhere;
 }
 
+.output-block {
+  margin-top: 10px;
+}
+
+.output-block textarea {
+  min-height: 104px;
+}
+
 .result-stack,
 .diagnosis-stack,
-.patch-stack {
+.patch-stack,
+.diff-stack {
   display: grid;
   gap: 9px;
 }
 
 .diagnosis-stack,
-.patch-stack {
+.patch-stack,
+.diff-stack,
+.patched-agent-block {
   margin-top: 10px;
 }
 
@@ -379,6 +453,46 @@ h3 {
 .patch-row svg {
   margin-top: 3px;
   color: #0f766e;
+}
+
+.diff-row,
+.patched-agent-block {
+  border-left: 4px solid #0f766e;
+  background: #f3faf7;
+  padding: 11px;
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.diff-grid span {
+  color: #66736f;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+pre {
+  max-height: 190px;
+  overflow: auto;
+  margin: 5px 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid rgba(23, 32, 30, 0.12);
+  background: #fffef8;
+  color: #17201e;
+  padding: 9px;
+  font: 12px/1.45 "Cascadia Mono", Consolas, "Microsoft YaHei", monospace;
+}
+
+.patched-agent-block p {
+  margin-top: 6px;
+  color: #394743;
+  overflow-wrap: anywhere;
 }
 
 .empty-copy {
@@ -433,6 +547,13 @@ h3 {
 .score-cell strong svg {
   margin-right: 5px;
   vertical-align: -2px;
+}
+
+.report-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 textarea {
@@ -498,6 +619,11 @@ textarea:focus {
   .primary-action,
   .secondary-action {
     width: 100%;
+  }
+
+  .config-grid,
+  .diff-grid {
+    grid-template-columns: 1fr;
   }
 
   .row-header {

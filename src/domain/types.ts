@@ -61,3 +61,7 @@ export interface EvalResult {
   evidence: string[];
   failureType?: FailureType;
 }
+
+export type EvalOutputMap = Record<string, string>;
+
+export type WorkbenchStage = 'config' | 'cases' | 'evaluated' | 'retested';

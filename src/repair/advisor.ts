@@ -1,4 +1,4 @@
-import type { FailureType } from '../domain/types';
+import type { AgentProfile, FailureType, ToolSpec } from '../domain/types';
 import type { FailureDiagnosis } from './analyzer';
 
 export interface RepairPatch {
@@ -13,6 +13,13 @@ export interface RepairPatch {
   before: string;
   after: string;
   expectedImpact: string;
+}
+
+export interface PatchDiff {
+  patchId: string;
+  targetField: RepairPatch['targetField'];
+  before: string;
+  after: string;
 }
 
 const patchByFailure: Record<FailureType, Omit<RepairPatch, 'id'>> = {
@@ -65,4 +72,110 @@ export function createRepairPatches(diagnoses: FailureDiagnosis[]): RepairPatch[
     id: `patch-${diagnosis.resultId}`,
     ...patchByFailure[diagnosis.failureType]
   }));
+}
+
+function appendUnique(items: string[], value: string): string[] {
+  return items.includes(value) ? items : [...items, value];
+}
+
+function updateToolDescription(tools: ToolSpec[], addition: string): ToolSpec[] {
+  if (tools.length === 0) {
+    return [
+      {
+        name: 'manualEvidenceCheck',
+        description: addition,
+        requiredParams: ['evidence']
+      }
+    ];
+  }
+
+  const [first, ...rest] = tools;
+  return [
+    {
+      ...first,
+      description: first.description.includes(addition) ? first.description : `${first.description}；${addition}`
+    },
+    ...rest
+  ];
+}
+
+export function applyRepairPatches(
+  agent: AgentProfile,
+  patches: RepairPatch[]
+): { agent: AgentProfile; diffs: PatchDiff[] } {
+  let nextAgent: AgentProfile = {
+    ...agent,
+    knowledgeSnippets: [...agent.knowledgeSnippets],
+    tools: agent.tools.map((tool) => ({ ...tool, requiredParams: [...tool.requiredParams] })),
+    history: agent.history.map((message) => ({ ...message })),
+    safetyBoundaries: [...agent.safetyBoundaries]
+  };
+  const diffs: PatchDiff[] = [];
+
+  for (const patch of patches) {
+    if (patch.targetField === 'systemPrompt') {
+      const before = nextAgent.systemPrompt;
+      nextAgent = {
+        ...nextAgent,
+        systemPrompt: before.includes(patch.after) ? before : `${before}\n${patch.after}`
+      };
+      diffs.push({ patchId: patch.id, targetField: patch.targetField, before, after: nextAgent.systemPrompt });
+    }
+
+    if (patch.targetField === 'safetyBoundaries') {
+      const before = nextAgent.safetyBoundaries.join('\n');
+      nextAgent = {
+        ...nextAgent,
+        safetyBoundaries: appendUnique(nextAgent.safetyBoundaries, patch.after)
+      };
+      diffs.push({
+        patchId: patch.id,
+        targetField: patch.targetField,
+        before,
+        after: nextAgent.safetyBoundaries.join('\n')
+      });
+    }
+
+    if (patch.targetField === 'knowledgeSnippets') {
+      const before = nextAgent.knowledgeSnippets.join('\n');
+      nextAgent = {
+        ...nextAgent,
+        knowledgeSnippets: appendUnique(nextAgent.knowledgeSnippets, patch.after)
+      };
+      diffs.push({
+        patchId: patch.id,
+        targetField: patch.targetField,
+        before,
+        after: nextAgent.knowledgeSnippets.join('\n')
+      });
+    }
+
+    if (patch.targetField === 'tools') {
+      const before = JSON.stringify(nextAgent.tools);
+      nextAgent = {
+        ...nextAgent,
+        tools: updateToolDescription(nextAgent.tools, patch.after)
+      };
+      diffs.push({ patchId: patch.id, targetField: patch.targetField, before, after: JSON.stringify(nextAgent.tools) });
+    }
+
+    if (patch.targetField === 'history') {
+      const before = nextAgent.history.map((message) => `${message.role}:${message.content}`).join('\n');
+      nextAgent = {
+        ...nextAgent,
+        history: appendUnique(
+          nextAgent.history.map((message) => JSON.stringify(message)),
+          JSON.stringify({ role: 'system', content: patch.after })
+        ).map((message) => JSON.parse(message))
+      };
+      diffs.push({
+        patchId: patch.id,
+        targetField: patch.targetField,
+        before,
+        after: nextAgent.history.map((message) => `${message.role}:${message.content}`).join('\n')
+      });
+    }
+  }
+
+  return { agent: nextAgent, diffs };
 }

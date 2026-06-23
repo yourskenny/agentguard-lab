@@ -5,7 +5,9 @@ import {
   applyRepairsAndRetest,
   createInitialState,
   generateCases,
-  runInitialEvaluation
+  runInitialEvaluation,
+  updateAgentConfig,
+  updateCaseOutput
 } from './state/workbenchState';
 import { ComparisonPanel } from './ui/ComparisonPanel';
 import { ResultPanel } from './ui/ResultPanel';
@@ -23,22 +25,19 @@ export function App() {
   );
 
   const report = useMemo(
-    () => {
-      if (state.retestResults.length === 0) {
-        return 'AgentGuard Lab 评测报告\n\n完成修复复测后生成完整报告。';
-      }
-
-      return createMarkdownReport({
-        agent: state.agent,
+    () =>
+      createMarkdownReport({
+        agent: state.baselineAgent,
+        patchedAgent: state.patchedAgent,
         cases: state.cases,
         results: state.initialResults,
         diagnoses: state.diagnoses,
         patches: state.patches,
+        patchDiffs: state.patchDiffs,
         retestResults: state.retestResults,
         beforePassRate: state.beforePassRate,
         afterPassRate: state.afterPassRate
-      });
-    },
+      }),
     [state]
   );
 
@@ -50,6 +49,14 @@ export function App() {
 
   function handleGenerate() {
     setState((current) => generateCases(current));
+  }
+
+  function handleAgentChange(agent: typeof state.agent) {
+    setState((current) => updateAgentConfig(current, agent));
+  }
+
+  function handleOutputChange(caseId: string, output: string) {
+    setState((current) => updateCaseOutput(current, caseId, output));
   }
 
   function handleRun() {
@@ -68,7 +75,7 @@ export function App() {
           <h1>AI Agent 可靠性评测与修复工作台</h1>
         </div>
         <div className="release-tag" aria-label="版本">
-          初赛 MVP
+          ver0.1 工作流版
         </div>
       </header>
 
@@ -84,13 +91,23 @@ export function App() {
         <SamplePanel
           samples={agentSamples}
           selectedId={selectedSample.id}
+          agent={state.agent}
           onSelect={selectSample}
+          onAgentChange={handleAgentChange}
         />
-        <TestCasePanel cases={state.cases} onGenerate={handleGenerate} onRun={handleRun} />
+        <TestCasePanel
+          cases={state.cases}
+          outputs={state.outputDrafts}
+          onGenerate={handleGenerate}
+          onRun={handleRun}
+          onOutputChange={handleOutputChange}
+        />
         <ResultPanel
           results={state.initialResults}
           diagnoses={state.diagnoses}
           patches={state.patches}
+          patchDiffs={state.patchDiffs}
+          patchedAgent={state.patchedAgent}
           onRetest={handleRetest}
         />
       </section>

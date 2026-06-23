@@ -1,13 +1,15 @@
 import { FlaskConical, Play, Sparkles } from 'lucide-react';
-import type { EvalCase } from '../domain/types';
+import type { EvalCase, EvalOutputMap } from '../domain/types';
 
 interface TestCasePanelProps {
   cases: EvalCase[];
+  outputs: EvalOutputMap;
   onGenerate: () => void;
   onRun: () => void;
+  onOutputChange: (caseId: string, output: string) => void;
 }
 
-export function TestCasePanel({ cases, onGenerate, onRun }: TestCasePanelProps) {
+export function TestCasePanel({ cases, outputs, onGenerate, onRun, onOutputChange }: TestCasePanelProps) {
   return (
     <section className="tool-panel case-panel">
       <div className="panel-heading">
@@ -38,6 +40,14 @@ export function TestCasePanel({ cases, onGenerate, onRun }: TestCasePanelProps) 
             </div>
             <p>{testCase.userInput}</p>
             <small>{testCase.expectedBehavior}</small>
+            <label className="field-block output-block">
+              <span>{`Agent 输出 - ${testCase.dimension}`}</span>
+              <textarea
+                aria-label={`Agent 输出 - ${testCase.dimension}`}
+                value={outputs[testCase.id] ?? ''}
+                onChange={(event) => onOutputChange(testCase.id, event.target.value)}
+              />
+            </label>
           </li>
         ))}
       </ol>

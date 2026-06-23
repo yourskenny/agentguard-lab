@@ -1,4 +1,4 @@
-import { FileText, Gauge, ShieldCheck } from 'lucide-react';
+import { Clipboard, Download, FileText, Gauge, ShieldCheck } from 'lucide-react';
 import type { EvalResult } from '../domain/types';
 
 interface ComparisonPanelProps {
@@ -15,6 +15,20 @@ export function ComparisonPanel({
   report
 }: ComparisonPanelProps) {
   const passedRetests = retestResults.filter((item) => item.status === 'pass').length;
+
+  function copyReport() {
+    void navigator.clipboard?.writeText(report);
+  }
+
+  function downloadReport() {
+    const blob = new Blob([report], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = 'agentguard-lab-report.md';
+    anchor.click();
+    URL.revokeObjectURL(url);
+  }
 
   return (
     <section className="comparison-shell" aria-label="复测对比与报告">
@@ -52,6 +66,16 @@ export function ComparisonPanel({
             <h2>报告预览</h2>
           </div>
           <FileText aria-hidden="true" size={20} />
+        </div>
+        <div className="report-actions">
+          <button className="secondary-action" type="button" onClick={copyReport}>
+            <Clipboard aria-hidden="true" size={16} />
+            <span>复制报告</span>
+          </button>
+          <button className="secondary-action" type="button" onClick={downloadReport}>
+            <Download aria-hidden="true" size={16} />
+            <span>下载 Markdown</span>
+          </button>
         </div>
         <textarea readOnly aria-label="报告预览" value={report} />
       </div>
