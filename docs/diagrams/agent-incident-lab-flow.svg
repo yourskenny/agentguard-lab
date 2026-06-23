@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1040" viewBox="0 0 1680 1040">
+<defs>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M2,2 L10,6 L2,10 Z" fill="context-stroke"/></marker>
+</defs>
+<rect width="1680" height="1040" fill="#eef2f1"/>
+<text x="840" y="70" text-anchor="middle" font-family="Microsoft YaHei, Arial" font-size="34" font-weight="800" fill="#17201e">Agent Incident Lab：事故回放与修复架构</text>
+<text x="840" y="112" text-anchor="middle" font-family="Microsoft YaHei, Arial" font-size="17" fill="#43504c">从一次真实 Agent 错答出发：资料源 → 原始回答 → 对抗测试 → 证据链 → 修复补丁 → 回放对比 → 复盘报告</text>
+<rect x="60" y="150" width="1560" height="180" rx="14" fill="#ffffff" stroke="#c9d3cf" stroke-width="2"/>
+<text x="84" y="184" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="800" fill="#17201e">P0 演示主线：可信事故闭环</text>
+<rect x="60" y="440" width="1560" height="220" rx="14" fill="#ffffff" stroke="#c9d3cf" stroke-width="2"/>
+<text x="84" y="474" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="800" fill="#17201e">修复与回放</text>
+<rect x="60" y="730" width="1560" height="190" rx="14" fill="#ffffff" stroke="#c9d3cf" stroke-width="2"/>
+<text x="84" y="764" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="800" fill="#17201e">交付边界与迁移保护</text>
+<line x1="320" y1="238" x2="385" y2="238" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="635" y1="238" x2="680" y2="238" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="930" y1="238" x2="975" y2="238" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1225" y1="238" x2="1270" y2="238" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1395" y1="286" x2="1395" y2="500" stroke="#be123c" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="1395" y="384" text-anchor="middle" font-family="Microsoft YaHei, Arial" font-size="14" font-weight="700" fill="#be123c">生成修复计划</text>
+<line x1="1270" y1="552" x2="1225" y2="552" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="975" y1="552" x2="930" y2="552" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="680" y1="552" x2="635" y2="552" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="340" y1="836" x2="385" y2="836" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="362" y="827" text-anchor="middle" font-family="Microsoft YaHei, Arial" font-size="14" font-weight="700" fill="#2f5f69">保护</text>
+<line x1="635" y1="836" x2="680" y2="836" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="930" y1="836" x2="975" y2="836" stroke="#2f5f69" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="952" y="827" text-anchor="middle" font-family="Microsoft YaHei, Arial" font-size="14" font-weight="700" fill="#2f5f69">后续</text>
+<rect x="90" y="190" width="230" height="96" rx="8" fill="#fff7e8" stroke="#b66a13" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="205" y="233">事故简报</tspan><tspan x="205" y="255">课程助教错误承诺延期</tspan></text>
+<rect x="385" y="190" width="250" height="96" rx="8" fill="#eef8f6" stroke="#0f766e" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="510" y="233">资料源与证据</tspan><tspan x="510" y="255">公告 / 作业要求 / 边界规则</tspan></text>
+<rect x="680" y="190" width="250" height="96" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="805" y="233">原始 Agent 回答</tspan><tspan x="805" y="255">迟交三天 / 不影响成绩</tspan></text>
+<rect x="975" y="190" width="250" height="96" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="1100" y="233">事故对抗测试</tspan><tspan x="1100" y="255">延期 / 成绩 / 传闻污染</tspan></text>
+<rect x="1270" y="190" width="250" height="96" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="1395" y="233">失败证据链</tspan><tspan x="1395" y="255">quote + evidence + impact</tspan></text>
+<rect x="385" y="500" width="250" height="104" rx="8" fill="#fffbeb" stroke="#ca8a04" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="510" y="547">事故复盘报告</tspan><tspan x="510" y="569">证据 / 补丁 / 剩余风险</tspan></text>
+<rect x="680" y="500" width="250" height="104" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="805" y="547">Before / After</tspan><tspan x="805" y="569">高风险失败消失</tspan></text>
+<rect x="975" y="500" width="250" height="104" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="1100" y="547">修复后回放</tspan><tspan x="1100" y="569">拒绝无依据确认并建议转人工</tspan></text>
+<rect x="1270" y="500" width="250" height="104" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="1395" y="547">修复补丁</tspan><tspan x="1395" y="569">Prompt / 知识库 / 上下文策略</tspan></text>
+<rect x="90" y="790" width="250" height="92" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="215" y="831">迁移保护</tspan><tspan x="215" y="853">旁路构建，验收后切主入口</tspan></text>
+<rect x="385" y="790" width="250" height="92" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="510" y="831">P0：可信闭环</tspan><tspan x="510" y="853">一个真实事故跑通</tspan></text>
+<rect x="680" y="790" width="250" height="92" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="805" y="831">P1：展示质量</tspan><tspan x="805" y="853">时间线 / diff / 响应式</tspan></text>
+<rect x="975" y="790" width="250" height="92" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<text text-anchor="middle" font-size="16" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#17201e"><tspan x="1100" y="831">复赛扩展</tspan><tspan x="1100" y="853">真实 API / 上传 / CI 回归</tspan></text>
+</svg>
