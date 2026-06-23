@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M2,2 L10,6 L2,10 Z" fill="context-stroke"/></marker>
+</defs>
+<rect width="1600" height="1000" fill="#f6f8fb"/>
+<text x="800" y="62" text-anchor="middle" font-family="Microsoft YaHei, Arial" font-size="28" font-weight="700" fill="#172033">AgentGuard Lab：AI Agent 可靠性评测与修复工作台架构图</text>
+<text x="800" y="96" text-anchor="middle" font-family="Microsoft YaHei, Arial" font-size="15" fill="#506078">输入 Agent 配置 → 生成测试集 → 运行评测 → 失败归因 → 修复建议 → 复测对比 → 导出报告</text>
+<rect x="70" y="140" width="1460" height="170" rx="12" fill="#f7faff" stroke="#9ab6e8" stroke-width="2"/>
+<text x="94" y="172" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="700" fill="#172033">Web 工作台 UI</text>
+<rect x="70" y="360" width="1460" height="260" rx="12" fill="#f9fbf7" stroke="#a9c796" stroke-width="2"/>
+<text x="94" y="392" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="700" fill="#172033">核心评测与修复流水线</text>
+<rect x="70" y="680" width="1460" height="180" rx="12" fill="#fffbf0" stroke="#d6b656" stroke-width="2"/>
+<text x="94" y="712" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="700" fill="#172033">比赛交付与证据链</text>
+<line x1="370" y1="236" x2="415" y2="236" stroke="#4f6f9f" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="695" y1="236" x2="740" y2="236" stroke="#4f6f9f" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1020" y1="236" x2="1065" y2="236" stroke="#4f6f9f" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="270" y1="491" x2="315" y2="491" stroke="#3f6ea8" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="485" y1="491" x2="530" y2="491" stroke="#3f6ea8" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="690" y1="491" x2="735" y2="491" stroke="#3f6ea8" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="915" y1="491" x2="960" y2="491" stroke="#b95a5a" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1150" y1="491" x2="1195" y2="491" stroke="#b95a5a" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1195" y1="491" x2="890" y2="581" stroke="#4b8c60" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="1042" y="528" text-anchor="middle" font-family="Microsoft YaHei, Arial" font-size="13" fill="#4b8c60">应用修复</text>
+<line x1="660" y1="581" x2="430" y2="786" stroke="#9a7b2f" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="430" y1="786" x2="535" y2="786" stroke="#9a7b2f" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="775" y1="786" x2="880" y2="786" stroke="#9a7b2f" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1120" y1="786" x2="1225" y2="786" stroke="#9a7b2f" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="110" y="190" width="260" height="92" rx="8" fill="#ffffff" stroke="#b9c8e3" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="240" y="214">左侧面板</tspan><tspan x="240" y="232">样例库 / Agent 配置</tspan><tspan x="240" y="250">System Prompt</tspan><tspan x="240" y="268">知识库 / 工具 / 历史对话</tspan></text>
+<rect x="415" y="190" width="280" height="92" rx="8" fill="#ffffff" stroke="#b9c8e3" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="555" y="223">中间面板</tspan><tspan x="555" y="241">测试集生成 / 运行控制</tspan><tspan x="555" y="259">Case 输入 / 期望 / 输出</tspan></text>
+<rect x="740" y="190" width="280" height="92" rx="8" fill="#ffffff" stroke="#b9c8e3" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="880" y="223">右侧面板</tspan><tspan x="880" y="241">失败归因 / 证据片段</tspan><tspan x="880" y="259">修复建议 / 可应用补丁</tspan></text>
+<rect x="1065" y="190" width="280" height="92" rx="8" fill="#ffffff" stroke="#b9c8e3" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="1205" y="223">底部面板</tspan><tspan x="1205" y="241">Before / After 通过率</tspan><tspan x="1205" y="259">剩余风险 / 报告预览</tspan></text>
+<rect x="120" y="455" width="150" height="72" rx="8" fill="#eaf2ff" stroke="#5b82c2" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="195" y="487">AgentProfile</tspan><tspan x="195" y="505">样例 / 用户配置</tspan></text>
+<rect x="315" y="455" width="170" height="72" rx="8" fill="#eaf2ff" stroke="#5b82c2" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="400" y="487">TestCaseGenerator</tspan><tspan x="400" y="505">六类可靠性测试</tspan></text>
+<rect x="530" y="455" width="160" height="72" rx="8" fill="#eaf2ff" stroke="#5b82c2" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="610" y="487">EvaluationRunner</tspan><tspan x="610" y="505">运行初测</tspan></text>
+<rect x="735" y="455" width="180" height="72" rx="8" fill="#fff7e6" stroke="#d79b00" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="825" y="487">JudgeEngine</tspan><tspan x="825" y="505">规则判定 / 证据提取</tspan></text>
+<rect x="960" y="445" width="190" height="92" rx="8" fill="#fff0f0" stroke="#d46a6a" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="1055" y="478">FailureAnalyzer</tspan><tspan x="1055" y="496">知识缺口 / 边界缺失</tspan><tspan x="1055" y="514">工具不清 / 上下文污染</tspan></text>
+<rect x="1195" y="445" width="200" height="92" rx="8" fill="#f0f8ff" stroke="#4f8edb" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="1295" y="478">RepairAdvisor</tspan><tspan x="1295" y="496">Prompt / 知识库 / 工具 schema</tspan><tspan x="1295" y="514">边界规则补丁</tspan></text>
+<rect x="660" y="555" width="230" height="52" rx="8" fill="#f1fbf5" stroke="#64a878" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="775" y="577">RetestComparator</tspan><tspan x="775" y="595">复测 + Before/After 对比</tspan></text>
+<rect x="220" y="750" width="210" height="72" rx="8" fill="#ffffff" stroke="#d6b656" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="325" y="782">ReportExporter</tspan><tspan x="325" y="800">Markdown / HTML 报告</tspan></text>
+<rect x="535" y="740" width="240" height="92" rx="8" fill="#ffffff" stroke="#d6b656" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="655" y="764">CompetitionEvidence</tspan><tspan x="655" y="782">3 张关键截图</tspan><tspan x="655" y="800">3 个 Session ID</tspan><tspan x="655" y="818">报名帖链接 / 体验地址</tspan></text>
+<rect x="880" y="740" width="240" height="92" rx="8" fill="#ffffff" stroke="#d6b656" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="1000" y="773">初赛 Demo 帖</tspan><tspan x="1000" y="791">真实场景 + 可体验链接</tspan><tspan x="1000" y="809">创作过程 + 核心价值</tspan></text>
+<rect x="1225" y="740" width="220" height="92" rx="8" fill="#ffffff" stroke="#d6b656" stroke-width="2"/>
+<text text-anchor="middle" font-size="14" font-family="Microsoft YaHei, Arial" font-weight="700" fill="#172033"><tspan x="1335" y="764">高分目标</tspan><tspan x="1335" y="782">10 秒看懂产品</tspan><tspan x="1335" y="800">60 秒跑完闭环</tspan><tspan x="1335" y="818">3 分钟看到修复证据</tspan></text>
+</svg>
